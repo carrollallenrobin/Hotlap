@@ -1,0 +1,172 @@
+[gd_scene load_steps=21 format=3 uid="uid://da32dg5fclpwc"]
+
+[ext_resource type="Script" path="res://Scripts/SelectMap.gd" id="1_0fr2t"]
+[ext_resource type="FontFile" uid="uid://b4gxuuaef54qg" path="res://Unigeo64-Medium-trial.ttf" id="1_pkp4l"]
+[ext_resource type="Texture2D" uid="uid://x6884osjg7jf" path="res://Images/garaz.png" id="1_tryoe"]
+[ext_resource type="Texture2D" uid="uid://7kk3u7fahyhx" path="res://Images/desertBG.png" id="3_l8ie8"]
+[ext_resource type="Texture2D" uid="uid://c2x8ixyhhqyia" path="res://Images/freeroamBG.png" id="6_ugwnf"]
+[ext_resource type="Texture2D" uid="uid://c0lc5wxkvagcn" path="res://Images/menuBG.png" id="7_menubg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8plxj"]
+texture = ExtResource("7_menubg")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(520, 240, 1370, 470)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qhpf3"]
+texture = ExtResource("7_menubg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ghhn"]
+texture = ExtResource("7_menubg")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xkn6p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xh5f7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oaodq"]
+texture = ExtResource("3_l8ie8")
+region_rect = Rect2(10, 10, 1910, 1060)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_whnee"]
+texture = ExtResource("3_l8ie8")
+region_rect = Rect2(460, 150, 1430, 660)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h3adj"]
+texture = ExtResource("3_l8ie8")
+region_rect = Rect2(460, 150, 1430, 660)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bo24q"]
+texture = ExtResource("6_ugwnf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uf14s"]
+texture = ExtResource("6_ugwnf")
+region_rect = Rect2(260, 160, 1270, 720)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4worq"]
+texture = ExtResource("6_ugwnf")
+region_rect = Rect2(260, 160, 1270, 720)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5r4ft"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sfgub"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3jyek"]
+
+[node name="SelectMap" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0fr2t")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_tryoe")
+
+[node name="ColorRect" type="ColorRect" parent="Control/TextureRect"]
+modulate = Color(0, 0, 0, 0.47451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_pkp4l")
+theme_override_font_sizes/font_size = 150
+text = "Select a map"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+
+[node name="ForestTrack" type="Button" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_pkp4l")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_8plxj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qhpf3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5ghhn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_xkn6p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xh5f7")
+text = "Forest Track"
+
+[node name="DesertTrack" type="Button" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_pkp4l")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_oaodq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_whnee")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h3adj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_xkn6p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xh5f7")
+text = "Desert Track"
+
+[node name="Freeroam" type="Button" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_pkp4l")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_bo24q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uf14s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4worq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_xkn6p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xh5f7")
+text = "Freeroam"
+
+[node name="Back" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_pkp4l")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5r4ft")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sfgub")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3jyek")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_xkn6p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xh5f7")
+text = "Back"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/GridContainer/ForestTrack" to="Control" method="_on_forest_track_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/GridContainer/DesertTrack" to="Control" method="_on_desert_track_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/GridContainer/Freeroam" to="Control" method="_on_freeroam_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Back" to="Control" method="_on_back_pressed"]

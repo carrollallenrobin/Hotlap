@@ -1,0 +1,202 @@
+[gd_scene load_steps=12 format=3 uid="uid://llynxnsn2vle"]
+
+[ext_resource type="FontFile" uid="uid://b4gxuuaef54qg" path="res://Unigeo64-Medium-trial.ttf" id="1_vvpmw"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="2_gvlo0"]
+[ext_resource type="PackedScene" uid="uid://bxqsx00hne7kp" path="res://Scenes/garage.tscn" id="2_xfgi1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7a5pv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wgut"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx6rr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rdeh6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykcyv"]
+
+[sub_resource type="Animation" id="Animation_jw4a2"]
+resource_name = "CameraAnimate"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/Background/Node3D/Camera3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.95786, -0.604377, -2.40744), Vector3(1.58263, -0.415576, -0.306092), Vector3(-0.104793, -0.241594, 1.41194), Vector3(-0.912132, -0.300747, 3.78368), Vector3(-1.05462, -0.0980226, 0.445076)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/Background/Node3D/Camera3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0444502, 1.16048, 0.0193276), Vector3(-0.0444502, 0.868605, 0.0193276), Vector3(-0.0444502, 0.965895, 0.0193276)]
+}
+
+[sub_resource type="Animation" id="Animation_c2ieb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/Background/Node3D/Camera3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.95786, -0.604377, -2.40744)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/Background/Node3D/Camera3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0444502, 1.16048, 0.0193276)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cychh"]
+_data = {
+"CameraAnimate": SubResource("Animation_jw4a2"),
+"RESET": SubResource("Animation_c2ieb")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Background" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport/Background" instance=ExtResource("2_xfgi1")]
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Background/Node3D"]
+modulate = Color(0, 0, 0, 0.47451)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera3D2" type="Camera3D" parent="SubViewportContainer/SubViewport/Background/Node3D"]
+transform = Transform3D(0.398037, -0.0484489, 0.916089, 0.0193073, 0.998826, 0.0444356, -0.917166, 1.93715e-07, 0.398505, 1.95786, -0.604377, -2.40744)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_gvlo0")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_vvpmw")
+theme_override_font_sizes/font_size = 150
+text = "Hotlap"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_vvpmw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7a5pv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4wgut")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gx6rr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rdeh6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ykcyv")
+text = "Start Game
+"
+
+[node name="Options" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_vvpmw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7a5pv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4wgut")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gx6rr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rdeh6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ykcyv")
+text = "Options"
+
+[node name="Top" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_vvpmw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7a5pv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4wgut")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gx6rr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rdeh6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ykcyv")
+text = "Top times"
+
+[node name="Exit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_vvpmw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7a5pv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4wgut")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gx6rr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rdeh6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ykcyv")
+text = "Exit Game"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cychh")
+}
+autoplay = "CameraAnimate"
+speed_scale = 0.12
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/StartGame" to="Control" method="_on_start_game_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Options" to="Control" method="_on_options_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Top" to="Control" method="_on_credits_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Exit" to="Control" method="_on_exit_pressed"]

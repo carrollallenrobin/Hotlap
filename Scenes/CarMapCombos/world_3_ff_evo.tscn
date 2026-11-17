@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2l4x85iyvas8"]
+
+[ext_resource type="PackedScene" uid="uid://ucvq6mwidm7p" path="res://Scenes/pause_menu.tscn" id="1_y7uxi"]
+[ext_resource type="PackedScene" uid="uid://bhdm1tlkhbwf" path="res://Scenes/fps_meter.tscn" id="2_csr87"]
+[ext_resource type="PackedScene" uid="uid://dw67ruj040qu7" path="res://Scenes/hud.tscn" id="3_f8wah"]
+[ext_resource type="PackedScene" uid="uid://boqgh0i1ltho5" path="res://Scenes/mountain.tscn" id="4_s4ykb"]
+[ext_resource type="PackedScene" uid="uid://c55flpl4v3wb3" path="res://Scenes/car3.tscn" id="5_vcv3b"]
+[ext_resource type="PackedScene" uid="uid://y4uvpcjjt57e" path="res://Scenes/pivot.tscn" id="6_yxmlk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbbei"]
+sky_top_color = Color(0.168627, 0.447059, 0.788235, 1)
+sky_horizon_color = Color(0.678431, 0.619608, 0.811765, 1)
+ground_bottom_color = Color(0.262745, 0.270588, 0.278431, 1)
+sun_angle_max = 52.04
+
+[sub_resource type="Sky" id="Sky_psfxo"]
+sky_material = SubResource("ProceduralSkyMaterial_wbbei")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_0cu3g"]
+background_mode = 2
+sky = SubResource("Sky_psfxo")
+ambient_light_source = 3
+ambient_light_color = Color(0.901961, 0.901961, 0.905882, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_max_steps = 128
+ssao_enabled = true
+ssil_intensity = 0.7
+glow_enabled = true
+fog_light_color = Color(0.8, 0.737255, 0.945098, 1)
+fog_density = 0.005
+volumetric_fog_density = 0.004
+volumetric_fog_albedo = Color(0.792157, 0.603922, 0.215686, 1)
+volumetric_fog_emission = Color(0.305882, 0.772549, 0.917647, 1)
+volumetric_fog_anisotropy = 0.68
+
+[node name="World3" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0cu3g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.918067, -0.395026, -0.0332781, -0.223439, 0.446288, 0.866546, -0.327456, 0.802983, -0.497986, -49.5558, 31.1583, 0)
+light_color = Color(0.686275, 0.572549, 0.427451, 1)
+light_energy = 2.7
+shadow_enabled = true
+shadow_bias = 0.5
+directional_shadow_max_distance = 200.0
+sky_mode = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_y7uxi")]
+
+[node name="FPSMeter" parent="." instance=ExtResource("2_csr87")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Hud" parent="." instance=ExtResource("3_f8wah")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Mountain" parent="." instance=ExtResource("4_s4ykb")]
+transform = Transform3D(150, 0, 0, 0, 75, 0, 0, 0, 75, 0, 0, 0)
+
+[node name="Car" parent="." instance=ExtResource("5_vcv3b")]
+transform = Transform3D(0.955278, 0, -0.295708, 0, 1, 0, 0.295708, 0, 0.955278, 1784.39, -686.837, 1367.52)
+
+[node name="Pivot" parent="Car" instance=ExtResource("6_yxmlk")]
+
+[node name="Camera3D2" type="Camera3D" parent="Car/Pivot"]

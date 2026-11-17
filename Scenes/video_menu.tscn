@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://fu7j55wwbum"]
+
+[ext_resource type="Texture2D" uid="uid://x6884osjg7jf" path="res://Images/garaz.png" id="2_5ei7q"]
+[ext_resource type="PackedScene" uid="uid://ccg7iuij2c1g1" path="res://Scenes/window_mode_button.tscn" id="3_7o516"]
+[ext_resource type="FontFile" uid="uid://b4gxuuaef54qg" path="res://Unigeo64-Medium-trial.ttf" id="3_60sj3"]
+[ext_resource type="PackedScene" uid="uid://bxd26tknfg5sp" path="res://Scenes/resolution_modey_button.tscn" id="4_6cu2p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgafv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhsgx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xj3r3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsdkd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_guwwy"]
+
+[node name="VideoMenu" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_5ei7q")
+
+[node name="ColorRect" type="ColorRect" parent="Control/TextureRect"]
+modulate = Color(0, 0, 0, 0.47451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_60sj3")
+theme_override_font_sizes/font_size = 150
+text = "Video Options"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="VScrollBar" type="ScrollContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 210)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/VScrollBar"]
+layout_mode = 2
+theme_override_constants/separation = 128
+
+[node name="Window_Mode_Button" parent="Control/MarginContainer/VBoxContainer/VScrollBar/VBoxContainer" instance=ExtResource("3_7o516")]
+layout_mode = 2
+
+[node name="Resolution_Modey_Button" parent="Control/MarginContainer/VBoxContainer/VScrollBar/VBoxContainer" instance=ExtResource("4_6cu2p")]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_60sj3")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jgafv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uhsgx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xj3r3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fsdkd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_guwwy")
+text = "Back"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Back" to="Control/MarginContainer/VBoxContainer/VScrollBar/VBoxContainer/Window_Mode_Button" method="_on_back_pressed"]

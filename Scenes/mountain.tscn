@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://boqgh0i1ltho5"]
+
+[ext_resource type="ArrayMesh" path="res://Scenes/mountain_data/roads_mesh.res" id="1_mq3pj"]
+[ext_resource type="Shape3D" path="res://Scenes/mountain_data/roads_collision.res" id="2_gtskl"]
+[ext_resource type="ArrayMesh" path="res://Scenes/mountain_data/canyon_mesh.res" id="3_3p6x7"]
+[ext_resource type="Shape3D" path="res://Scenes/mountain_data/canyon_collision.res" id="4_6l4em"]
+
+[node name="Mountain" type="Node3D" unique_id=1465318326]
+
+[node name="Roads" type="MeshInstance3D" parent="." unique_id=1824636883]
+mesh = ExtResource("1_mq3pj")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Roads" unique_id=1314248862]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Roads/StaticBody3D" unique_id=693841963]
+shape = ExtResource("2_gtskl")
+
+[node name="Canyon" type="MeshInstance3D" parent="." unique_id=1175130271]
+mesh = ExtResource("3_3p6x7")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Canyon" unique_id=309978658]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Canyon/StaticBody3D" unique_id=513771820]
+shape = ExtResource("4_6l4em")

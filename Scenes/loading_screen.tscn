@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://br1isbnaft076"]
+
+[ext_resource type="Texture2D" uid="uid://x6884osjg7jf" path="res://Images/garaz.png" id="1_rmbef"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_rmbef")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.341176, 0.341176, 0.341176, 0.231373)
+
+[node name="Label" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 128
+text = "Loading ..."
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+offset_top = 930.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 48
+step = 1.0

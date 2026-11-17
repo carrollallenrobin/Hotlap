@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://c16irys5euhh0"]
+
+[ext_resource type="Script" path="res://Scripts/audio_menu.gd" id="1_lqq66"]
+[ext_resource type="Texture2D" uid="uid://x6884osjg7jf" path="res://Images/garaz.png" id="2_sferr"]
+[ext_resource type="FontFile" uid="uid://b4gxuuaef54qg" path="res://Unigeo64-Medium-trial.ttf" id="3_vgx8n"]
+[ext_resource type="PackedScene" uid="uid://bhcqr314goea0" path="res://Scenes/audio_slider_settings.tscn" id="4_idehs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0x2e1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbkcf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sle2w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jrd6h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3c38a"]
+
+[node name="AudioMenu" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lqq66")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_sferr")
+
+[node name="ColorRect" type="ColorRect" parent="Control/TextureRect"]
+modulate = Color(0, 0, 0, 0.47451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_vgx8n")
+theme_override_font_sizes/font_size = 150
+text = "Audio Options"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 210)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Audio_Slider_Settings" parent="Control/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_idehs")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="Back" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_vgx8n")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0x2e1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cbkcf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sle2w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jrd6h")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3c38a")
+text = "Back"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Back" to="Control" method="_on_back_pressed"]

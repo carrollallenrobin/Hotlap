@@ -1,0 +1,9 @@
+# Godot 4 cache / editor data
+.godot/
+*.tmp
+
+# Export output
+build/
+
+# macOS
+.DS_Store

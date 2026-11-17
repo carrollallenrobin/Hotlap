@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl5hbjyr6ywh1"]
+
+[ext_resource type="Script" path="res://Scripts/MusicController.gd" id="1_o2bcb"]
+[ext_resource type="AudioStream" uid="uid://dxaijn638txpx" path="res://Sounds/Music/Sunshine In Your Eyes.mp3" id="2_u7ogd"]
+
+[node name="MusicController" type="Node"]
+script = ExtResource("1_o2bcb")
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u7ogd")
+volume_db = -10.0

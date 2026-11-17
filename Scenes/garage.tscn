@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxqsx00hne7kp"]
+
+[ext_resource type="PackedScene" uid="uid://bqnogepdygbbo" path="res://Models/garaz.glb" id="2_kejpw"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="garaz" parent="." instance=ExtResource("2_kejpw")]
